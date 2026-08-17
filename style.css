@@ -43,9 +43,9 @@ h1, h2, h3 { font-family: 'Baloo 2', 'Fredoka', sans-serif; }
   border-radius: 0 0 26px 26px;
   box-shadow: var(--shadow);
 }
-.topbar-inner { display: flex; align-items: center; justify-content: space-between; }
+.topbar-inner { display: flex; align-items: center; justify-content: center; }
 .topbar h1 {
-  font-size: 1.5rem; margin: 0; color: var(--grape);
+  font-size: 2.4rem; margin: 0; color: var(--grape);
   text-shadow: 2px 2px 0 #fff;
 }
 .topbar h1::before { content: "🌟 "; }
@@ -160,14 +160,14 @@ section h2 {
 .num:nth-child(5n+3).disponivel { background: linear-gradient(160deg, #ffd98f, #ffc24d); }
 .num:nth-child(5n+4).disponivel { background: linear-gradient(160deg, #9be8c9, #57d6a6); }
 .num.reservado { background: linear-gradient(160deg, #ffe28a, #ffcf3d); color: #6b4e00; cursor: not-allowed; }
-.num.pago { background: linear-gradient(160deg, #ff9a9a, #ff5e5e); color: #5a0000; cursor: not-allowed; }
+.num.pago { background: linear-gradient(160deg, #ff4d4d, #cc0000); color: #fff; cursor: not-allowed; }
 .num.sel { outline: 4px dashed #fff; outline-offset: 2px; transform: scale(1.08); }
 
 .legenda { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 16px; font-size: 0.9rem; color: var(--ink-soft); font-weight: 500; }
 .dot { display: inline-block; width: 14px; height: 14px; border-radius: 5px; margin-right: 6px; vertical-align: middle; }
 .dot.disponivel { background: #5bb8ff; }
 .dot.reservado { background: #ffcf3d; }
-.dot.pago { background: #ff5e5e; }
+.dot.pago { background: #cc0000; }
 
 /* ---------- Cards / Admin ---------- */
 .card {
@@ -195,7 +195,7 @@ section h2 {
 .adm-num { font-family: 'Baloo 2'; font-weight: 800; min-width: 56px; font-size: 1.1rem; }
 .adm-status { text-transform: capitalize; flex: 1; font-weight: 600; }
 .adm-row.reservado .adm-status { color: #b8860b; }
-.adm-row.pago .adm-status { color: #ff5e5e; }
+.adm-row.pago .adm-status { color: #cc0000; }
 .adm-actions { display: flex; gap: 8px; }
 
 .resultado { margin-top: 18px; padding: 18px; border-radius: 18px; background: linear-gradient(160deg, #d6ffe9, #aef0cf); border: 3px solid #fff; }
