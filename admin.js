@@ -58,12 +58,19 @@ async function renderLista() {
     return;
   }
   el.innerHTML = '';
+  const orderMap = {};
+  data.orders.forEach((o) => o.numeros.forEach((num) => (orderMap[num] = o)));
   alvo.sort((a, b) => a.numero - b.numero).forEach((n) => {
+    const ord = orderMap[n.numero];
+    const buyer = ord
+      ? [ord.nome, ord.telefone, ord.email].filter(Boolean).join(' · ')
+      : '';
     const row = document.createElement('div');
     row.className = 'adm-row ' + n.status;
     row.innerHTML = `
       <span class="adm-num">#${n.numero}</span>
       <span class="adm-status">${n.status}</span>
+      <span class="adm-buyer">${buyer || '—'}</span>
       <span class="adm-actions">
         ${n.status !== 'pago' ? `<button data-pagar="${n.numero}" class="btn btn-small btn-primary">Marcar pago</button>` : ''}
         <button data-lib="${n.numero}" class="btn btn-small btn-ghost">Liberar</button>

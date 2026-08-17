@@ -188,12 +188,13 @@ section h2 {
 
 .lista-adm { display: flex; flex-direction: column; gap: 10px; }
 .adm-row {
-  display: flex; align-items: center; gap: 12px;
+  display: flex; align-items: center; flex-wrap: wrap; gap: 12px;
   background: #fbf8ff; border-radius: 16px; padding: 12px 16px;
   border: 2px solid #efe7ff;
 }
 .adm-num { font-family: 'Baloo 2'; font-weight: 800; min-width: 56px; font-size: 1.1rem; }
-.adm-status { text-transform: capitalize; flex: 1; font-weight: 600; }
+.adm-status { text-transform: capitalize; font-weight: 600; }
+.adm-buyer { flex: 1; min-width: 140px; font-size: 0.85rem; color: var(--ink-soft); font-weight: 500; overflow-wrap: anywhere; }
 .adm-row.reservado .adm-status { color: #b8860b; }
 .adm-row.pago .adm-status { color: #cc0000; }
 .adm-actions { display: flex; gap: 8px; }

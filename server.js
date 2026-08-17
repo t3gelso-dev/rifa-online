@@ -18,7 +18,8 @@ function loadEnv() {
 loadEnv();
 
 const PORT = process.env.PORT || 3000;
-const MOCK = process.env.MOCK === 'true' || !process.env.MP_ACCESS_TOKEN;
+const MP_TOKEN = process.env.MP_ACCESS_TOKEN;
+const PAYMENT_MODE = (process.env.PAYMENT_MODE || (MP_TOKEN ? 'mercadopago' : 'demo')).toLowerCase();
 const PUBLIC_URL = process.env.PUBLIC_URL || `http://localhost:${PORT}`;
 const ADMIN_PASS = process.env.ADMIN_PASS || 'admin123';
 
@@ -68,7 +69,7 @@ function rebuildNumbers() {
 
 function releaseExpiredOrders() {
   const now = Date.now();
-  const EXPIRA_MS = 30 * 60 * 1000; // 30 min
+  const EXPIRA_MS = 12 * 60 * 60 * 1000; // 12 horas
   let changed = false;
   db.orders.forEach((o) => {
     if (o.status === 'pending' && now - o.createdAt > EXPIRA_MS) {
@@ -190,7 +191,7 @@ app.get('/api/raffle', (req, res) => {
     totalNumeros: cfg.totalNumeros,
     numeros: db.numbers,
     resumo,
-    mock: MOCK,
+    paymentMode: PAYMENT_MODE,
   });
 });
 
@@ -228,32 +229,32 @@ app.post('/api/reservar', async (req, res) => {
     });
     db.orders.push(order);
 
-    if (MOCK) {
-      order.qrCode = gerarPixFake(total, db.config);
-      order.qrBase64 = '';
-      saveDB();
-      return res.json({
-        orderId: order.id,
-        total,
-        qrCode: order.qrCode,
-        qrBase64: '',
-        mock: true,
-        numeros: order.numeros,
-      });
-    }
+    let qrCode = '';
+    let qrBase64 = '';
+    let modo = PAYMENT_MODE;
 
-    const pix = await criarPixMP(total, `Rifa ${db.config.titulo} - nº ${numeros.join(',')}`, { nome, email });
-    order.paymentId = pix.paymentId;
-    order.qrCode = pix.qrCode;
-    order.qrBase64 = pix.qrBase64;
+    if (PAYMENT_MODE === 'mercadopago' && MP_TOKEN) {
+      const pix = await criarPixMP(total, `Rifa ${db.config.titulo} - nº ${numeros.join(',')}`, { nome, email });
+      order.paymentId = pix.paymentId;
+      qrCode = pix.qrCode;
+      qrBase64 = pix.qrBase64;
+    } else {
+      // Pix pessoal (ou demo): gera o "copia e cola" com a chave configurada
+      qrCode = gerarPixFake(total, db.config);
+      qrBase64 = '';
+      if (PAYMENT_MODE === 'demo') modo = 'demo';
+      else modo = 'pix';
+    }
+    order.qrCode = qrCode;
+    order.qrBase64 = qrBase64;
     saveDB();
     res.json({
       orderId: order.id,
       total,
-      qrCode: pix.qrCode,
-      qrBase64: pix.qrBase64,
-      paymentId: pix.paymentId,
-      mock: false,
+      qrCode,
+      qrBase64,
+      paymentId: order.paymentId,
+      modo,
       numeros: order.numeros,
     });
   } catch (e) {
@@ -271,7 +272,7 @@ app.get('/api/pagamento/:orderId', (req, res) => {
 
 // Simular pagamento (somente modo MOCK / demo)
 app.post('/api/simular-pagamento/:orderId', (req, res) => {
-  if (!MOCK) return res.status(400).json({ error: 'Disponível apenas em modo demo' });
+  if (PAYMENT_MODE !== 'demo') return res.status(400).json({ error: 'Disponível apenas em modo demo' });
   const order = db.orders.find((o) => o.id === req.params.orderId);
   if (!order) return res.status(404).json({ error: 'Pedido não encontrado' });
   aprovarPedido(order);
@@ -366,6 +367,9 @@ app.post('/api/admin/marcar-pago', authMiddleware, (req, res) => {
   const num = db.numbers.find((x) => x.numero === numero);
   if (!num) return res.status(404).json({ error: 'Número não encontrado' });
   num.status = 'pago';
+  db.orders.forEach((o) => {
+    if (o.numeros.includes(numero)) o.status = 'approved';
+  });
   saveDB();
   res.json({ ok: true });
 });
@@ -396,5 +400,5 @@ app.post('/api/admin/reset', authMiddleware, (req, res) => {
 loadDB();
 app.listen(PORT, () => {
   console.log(`Rifa online rodando em ${PUBLIC_URL}`);
-  console.log(MOCK ? 'MODO DEMO ativo (Pix fake, use "simular pagamento").' : 'Mercado Pago ativo.');
+  console.log('Modo de pagamento:', PAYMENT_MODE);
 });
