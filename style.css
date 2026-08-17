@@ -79,6 +79,15 @@ main.container { padding: 30px 0 60px; }
   font-size: 1.15rem; line-height: 1.6; margin: 0 0 20px;
   color: var(--ink); font-weight: 500;
 }
+.hero-img {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto 20px;
+  border-radius: 22px;
+  border: 5px solid #fff;
+  box-shadow: var(--shadow);
+}
 .resumo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 .resumo-item {
   background: linear-gradient(160deg, #fff, #f3f0ff);
@@ -142,14 +151,14 @@ section h2 {
 .num:nth-child(5n+3).disponivel { background: linear-gradient(160deg, #ffd98f, #ffc24d); }
 .num:nth-child(5n+4).disponivel { background: linear-gradient(160deg, #9be8c9, #57d6a6); }
 .num.reservado { background: linear-gradient(160deg, #ffe28a, #ffcf3d); color: #6b4e00; cursor: not-allowed; }
-.num.pago { background: linear-gradient(160deg, #8be0a0, #3fb878); color: #064a26; cursor: not-allowed; }
+.num.pago { background: linear-gradient(160deg, #ff9a9a, #ff5e5e); color: #5a0000; cursor: not-allowed; }
 .num.sel { outline: 4px dashed #fff; outline-offset: 2px; transform: scale(1.08); }
 
 .legenda { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 16px; font-size: 0.9rem; color: var(--ink-soft); font-weight: 500; }
 .dot { display: inline-block; width: 14px; height: 14px; border-radius: 5px; margin-right: 6px; vertical-align: middle; }
 .dot.disponivel { background: #5bb8ff; }
 .dot.reservado { background: #ffcf3d; }
-.dot.pago { background: #3fb878; }
+.dot.pago { background: #ff5e5e; }
 
 /* ---------- Cards / Admin ---------- */
 .card {
@@ -177,7 +186,7 @@ section h2 {
 .adm-num { font-family: 'Baloo 2'; font-weight: 800; min-width: 56px; font-size: 1.1rem; }
 .adm-status { text-transform: capitalize; flex: 1; font-weight: 600; }
 .adm-row.reservado .adm-status { color: #b8860b; }
-.adm-row.pago .adm-status { color: var(--mint); }
+.adm-row.pago .adm-status { color: #ff5e5e; }
 .adm-actions { display: flex; gap: 8px; }
 
 .resultado { margin-top: 18px; padding: 18px; border-radius: 18px; background: linear-gradient(160deg, #d6ffe9, #aef0cf); border: 3px solid #fff; }

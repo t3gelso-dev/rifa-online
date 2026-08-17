@@ -166,7 +166,7 @@ const app = express();
 app.use(express.json());
 
 // Arquivos do front (na raiz do projeto)
-const frontFiles = ['index.html', 'admin.html', 'style.css', 'app.js', 'admin.js'];
+const frontFiles = ['index.html', 'admin.html', 'style.css', 'app.js', 'admin.js', 'jesus-criancas.png'];
 frontFiles.forEach((f) => {
   app.get('/' + (f === 'index.html' ? '' : f), (req, res) => {
     res.sendFile(path.join(__dirname, f));
