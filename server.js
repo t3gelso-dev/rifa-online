@@ -39,25 +39,88 @@ const DEFAULT_CONFIG = {
 
 let db = null;
 
-function loadDB() {
-  if (fs.existsSync(DB_PATH)) {
-    db = JSON.parse(fs.readFileSync(DB_PATH, 'utf8'));
-  } else {
-    db = { config: { ...DEFAULT_CONFIG }, numbers: [], orders: [], tokens: {} };
-    rebuildNumbers();
-    saveDB();
-  }
+const GH_TOKEN = process.env.GITHUB_TOKEN;
+const GH_REPO = process.env.GITHUB_REPO; // formato: owner/repo
+const GH_PATH = process.env.GITHUB_PATH || 'db.json';
+
+function freshDB() {
+  return { config: { ...DEFAULT_CONFIG }, numbers: [], orders: [], tokens: {} };
+}
+function ensureStructure() {
   if (!db.config) db.config = { ...DEFAULT_CONFIG };
   if (!db.numbers) db.numbers = [];
   if (!db.orders) db.orders = [];
   if (!db.tokens) db.tokens = {};
-  // garante que a quantidade de números bate com a config
   if (db.numbers.length !== db.config.totalNumeros) rebuildNumbers();
-  return db;
 }
-
-function saveDB() {
+function saveToFile() {
   fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2));
+}
+function loadFromFile() {
+  if (fs.existsSync(DB_PATH)) {
+    db = JSON.parse(fs.readFileSync(DB_PATH, 'utf8'));
+  } else {
+    db = freshDB();
+    rebuildNumbers();
+    saveToFile();
+  }
+  ensureStructure();
+}
+async function ghGet() {
+  const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_PATH}`, {
+    headers: { Authorization: `Bearer ${GH_TOKEN}`, Accept: 'application/vnd.github+json' },
+  });
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error('ghGet ' + res.status);
+  const data = await res.json();
+  return { sha: data.sha, content: JSON.parse(Buffer.from(data.content, 'base64').toString('utf8')) };
+}
+async function ghPut() {
+  let sha;
+  try {
+    const cur = await ghGet();
+    if (cur) sha = cur.sha;
+  } catch (e) {}
+  const body = {
+    message: 'rifa db update',
+    content: Buffer.from(JSON.stringify(db, null, 2)).toString('base64'),
+  };
+  if (sha) body.sha = sha;
+  const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_PATH}`, {
+    method: 'PUT',
+    headers: { Authorization: `Bearer ${GH_TOKEN}`, 'Content-Type': 'application/json', Accept: 'application/vnd.github+json' },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    const t = await res.text();
+    throw new Error('ghPut ' + res.status + ' ' + t);
+  }
+}
+// Carrega o estado do GitHub (persistente) ou do arquivo local (dev)
+async function initDB() {
+  if (GH_TOKEN && GH_REPO) {
+    try {
+      const got = await ghGet();
+      if (got) db = got.content;
+      else {
+        db = freshDB();
+        rebuildNumbers();
+        await ghPut();
+      }
+      saveToFile();
+      ensureStructure();
+      return;
+    } catch (e) {
+      console.error('GitHub indisponível, usando arquivo local:', e.message);
+    }
+  }
+  loadFromFile();
+}
+function saveDB() {
+  saveToFile();
+  if (GH_TOKEN && GH_REPO) {
+    ghPut().catch((e) => console.error('Falha ao salvar no GitHub:', e.message));
+  }
 }
 
 function rebuildNumbers() {
@@ -397,8 +460,10 @@ app.post('/api/admin/reset', authMiddleware, (req, res) => {
   res.json({ ok: true });
 });
 
-loadDB();
-app.listen(PORT, () => {
-  console.log(`Rifa online rodando em ${PUBLIC_URL}`);
-  console.log('Modo de pagamento:', PAYMENT_MODE);
+initDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Rifa online rodando em ${PUBLIC_URL}`);
+    console.log('Modo de pagamento:', PAYMENT_MODE);
+    console.log(GH_TOKEN && GH_REPO ? 'Persistência: GitHub (' + GH_REPO + ')' : 'Persistência: arquivo local');
+  });
 });
