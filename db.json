@@ -1,0 +1,417 @@
+{
+  "config": {
+    "titulo": "Rifa Online",
+    "descricao": "Prêmio de R$ 200,00",
+    "totalNumeros": 100,
+    "valor": 10,
+    "pixKey": "",
+    "pagador": "RECEBEDOR",
+    "cidade": "CIDADE",
+    "contato": "WhatsApp: (00) 00000-0000",
+    "adminPass": "admin123"
+  },
+  "numbers": [
+    {
+      "numero": 1,
+      "status": "disponivel"
+    },
+    {
+      "numero": 2,
+      "status": "disponivel"
+    },
+    {
+      "numero": 3,
+      "status": "disponivel"
+    },
+    {
+      "numero": 4,
+      "status": "disponivel"
+    },
+    {
+      "numero": 5,
+      "status": "disponivel"
+    },
+    {
+      "numero": 6,
+      "status": "disponivel"
+    },
+    {
+      "numero": 7,
+      "status": "disponivel"
+    },
+    {
+      "numero": 8,
+      "status": "disponivel"
+    },
+    {
+      "numero": 9,
+      "status": "disponivel"
+    },
+    {
+      "numero": 10,
+      "status": "disponivel"
+    },
+    {
+      "numero": 11,
+      "status": "disponivel"
+    },
+    {
+      "numero": 12,
+      "status": "disponivel"
+    },
+    {
+      "numero": 13,
+      "status": "disponivel"
+    },
+    {
+      "numero": 14,
+      "status": "disponivel"
+    },
+    {
+      "numero": 15,
+      "status": "disponivel"
+    },
+    {
+      "numero": 16,
+      "status": "disponivel"
+    },
+    {
+      "numero": 17,
+      "status": "disponivel"
+    },
+    {
+      "numero": 18,
+      "status": "disponivel"
+    },
+    {
+      "numero": 19,
+      "status": "disponivel"
+    },
+    {
+      "numero": 20,
+      "status": "disponivel"
+    },
+    {
+      "numero": 21,
+      "status": "disponivel"
+    },
+    {
+      "numero": 22,
+      "status": "disponivel"
+    },
+    {
+      "numero": 23,
+      "status": "disponivel"
+    },
+    {
+      "numero": 24,
+      "status": "disponivel"
+    },
+    {
+      "numero": 25,
+      "status": "disponivel"
+    },
+    {
+      "numero": 26,
+      "status": "disponivel"
+    },
+    {
+      "numero": 27,
+      "status": "disponivel"
+    },
+    {
+      "numero": 28,
+      "status": "disponivel"
+    },
+    {
+      "numero": 29,
+      "status": "disponivel"
+    },
+    {
+      "numero": 30,
+      "status": "disponivel"
+    },
+    {
+      "numero": 31,
+      "status": "disponivel"
+    },
+    {
+      "numero": 32,
+      "status": "disponivel"
+    },
+    {
+      "numero": 33,
+      "status": "disponivel"
+    },
+    {
+      "numero": 34,
+      "status": "disponivel"
+    },
+    {
+      "numero": 35,
+      "status": "disponivel"
+    },
+    {
+      "numero": 36,
+      "status": "disponivel"
+    },
+    {
+      "numero": 37,
+      "status": "disponivel"
+    },
+    {
+      "numero": 38,
+      "status": "disponivel"
+    },
+    {
+      "numero": 39,
+      "status": "disponivel"
+    },
+    {
+      "numero": 40,
+      "status": "disponivel"
+    },
+    {
+      "numero": 41,
+      "status": "disponivel"
+    },
+    {
+      "numero": 42,
+      "status": "disponivel"
+    },
+    {
+      "numero": 43,
+      "status": "disponivel"
+    },
+    {
+      "numero": 44,
+      "status": "disponivel"
+    },
+    {
+      "numero": 45,
+      "status": "disponivel"
+    },
+    {
+      "numero": 46,
+      "status": "disponivel"
+    },
+    {
+      "numero": 47,
+      "status": "disponivel"
+    },
+    {
+      "numero": 48,
+      "status": "disponivel"
+    },
+    {
+      "numero": 49,
+      "status": "disponivel"
+    },
+    {
+      "numero": 50,
+      "status": "disponivel"
+    },
+    {
+      "numero": 51,
+      "status": "disponivel"
+    },
+    {
+      "numero": 52,
+      "status": "disponivel"
+    },
+    {
+      "numero": 53,
+      "status": "disponivel"
+    },
+    {
+      "numero": 54,
+      "status": "disponivel"
+    },
+    {
+      "numero": 55,
+      "status": "disponivel"
+    },
+    {
+      "numero": 56,
+      "status": "disponivel"
+    },
+    {
+      "numero": 57,
+      "status": "disponivel"
+    },
+    {
+      "numero": 58,
+      "status": "disponivel"
+    },
+    {
+      "numero": 59,
+      "status": "disponivel"
+    },
+    {
+      "numero": 60,
+      "status": "disponivel"
+    },
+    {
+      "numero": 61,
+      "status": "disponivel"
+    },
+    {
+      "numero": 62,
+      "status": "disponivel"
+    },
+    {
+      "numero": 63,
+      "status": "disponivel"
+    },
+    {
+      "numero": 64,
+      "status": "disponivel"
+    },
+    {
+      "numero": 65,
+      "status": "disponivel"
+    },
+    {
+      "numero": 66,
+      "status": "disponivel"
+    },
+    {
+      "numero": 67,
+      "status": "disponivel"
+    },
+    {
+      "numero": 68,
+      "status": "disponivel"
+    },
+    {
+      "numero": 69,
+      "status": "disponivel"
+    },
+    {
+      "numero": 70,
+      "status": "disponivel"
+    },
+    {
+      "numero": 71,
+      "status": "disponivel"
+    },
+    {
+      "numero": 72,
+      "status": "disponivel"
+    },
+    {
+      "numero": 73,
+      "status": "disponivel"
+    },
+    {
+      "numero": 74,
+      "status": "disponivel"
+    },
+    {
+      "numero": 75,
+      "status": "disponivel"
+    },
+    {
+      "numero": 76,
+      "status": "disponivel"
+    },
+    {
+      "numero": 77,
+      "status": "disponivel"
+    },
+    {
+      "numero": 78,
+      "status": "disponivel"
+    },
+    {
+      "numero": 79,
+      "status": "disponivel"
+    },
+    {
+      "numero": 80,
+      "status": "disponivel"
+    },
+    {
+      "numero": 81,
+      "status": "disponivel"
+    },
+    {
+      "numero": 82,
+      "status": "disponivel"
+    },
+    {
+      "numero": 83,
+      "status": "disponivel"
+    },
+    {
+      "numero": 84,
+      "status": "disponivel"
+    },
+    {
+      "numero": 85,
+      "status": "disponivel"
+    },
+    {
+      "numero": 86,
+      "status": "disponivel"
+    },
+    {
+      "numero": 87,
+      "status": "disponivel"
+    },
+    {
+      "numero": 88,
+      "status": "disponivel"
+    },
+    {
+      "numero": 89,
+      "status": "disponivel"
+    },
+    {
+      "numero": 90,
+      "status": "disponivel"
+    },
+    {
+      "numero": 91,
+      "status": "disponivel"
+    },
+    {
+      "numero": 92,
+      "status": "disponivel"
+    },
+    {
+      "numero": 93,
+      "status": "disponivel"
+    },
+    {
+      "numero": 94,
+      "status": "disponivel"
+    },
+    {
+      "numero": 95,
+      "status": "disponivel"
+    },
+    {
+      "numero": 96,
+      "status": "disponivel"
+    },
+    {
+      "numero": 97,
+      "status": "disponivel"
+    },
+    {
+      "numero": 98,
+      "status": "disponivel"
+    },
+    {
+      "numero": 99,
+      "status": "disponivel"
+    },
+    {
+      "numero": 100,
+      "status": "disponivel"
+    }
+  ],
+  "orders": [],
+  "tokens": {}
+}
