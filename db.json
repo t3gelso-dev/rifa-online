@@ -105,7 +105,7 @@
     },
     {
       "numero": 24,
-      "status": "disponivel"
+      "status": "reservado"
     },
     {
       "numero": 25,
@@ -197,7 +197,7 @@
     },
     {
       "numero": 47,
-      "status": "disponivel"
+      "status": "reservado"
     },
     {
       "numero": 48,
@@ -293,7 +293,7 @@
     },
     {
       "numero": 71,
-      "status": "disponivel"
+      "status": "reservado"
     },
     {
       "numero": 72,
@@ -412,6 +412,24 @@
       "status": "disponivel"
     }
   ],
-  "orders": [],
+  "orders": [
+    {
+      "id": "59ab155e-5bfe-43f3-8a5c-f133ac35e6cc",
+      "numeros": [
+        24,
+        47,
+        71
+      ],
+      "nome": "Gelson Moraes Tajes de oliveira",
+      "email": "t3gelso@gmail.com",
+      "telefone": "41987030418",
+      "total": 30,
+      "status": "pending",
+      "paymentId": "173397914749",
+      "createdAt": 1786998188388,
+      "qrCode": "00020126580014br.gov.bcb.pix01364de98293-996d-4f10-93dd-9aa865dc4cbb520400005303986540530.005802BR5911OLGE10337456008Curitiba62250521mpqrinter1733979147496304C175",
+      "qrBase64": "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"
+    }
+  ],
   "tokens": {}
 }
