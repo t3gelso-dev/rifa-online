@@ -19,7 +19,7 @@ async function carregarRifa() {
   state.mock = data.mock;
   document.getElementById('titulo').textContent = data.titulo;
   document.title = data.titulo;
-  document.getElementById('descricao').textContent = data.descricao;
+  document.getElementById('descricao').textContent = '🎁 ' + data.descricao;
   document.getElementById('valor').textContent = formatBRL(data.valor);
   document.getElementById('disponiveis').textContent = data.resumo.disponivel;
   document.getElementById('reservados').textContent = data.resumo.reservado;
