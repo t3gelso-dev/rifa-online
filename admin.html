@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Rifa Online</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <h1>Painel do Admin</h1>
+      <a href="index.html" class="admin-link">Ver rifa</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="login" class="card login">
+      <h2>Acesso restrito</h2>
+      <input id="senha" type="password" placeholder="Senha do admin" />
+      <button id="btnLogin" class="btn btn-primary">Entrar</button>
+      <p class="muted">Senha padrão: admin123 (altere nas configurações).</p>
+    </div>
+
+    <div id="painel" class="hidden">
+      <section class="card">
+        <h2>Configurações da rifa</h2>
+        <div class="form-grid">
+          <label>Título<input id="c_titulo" type="text" /></label>
+          <label>Descrição / prêmio<input id="c_descricao" type="text" /></label>
+          <label>Total de números<input id="c_total" type="number" min="1" max="5000" /></label>
+          <label>Valor por número (R$)<input id="c_valor" type="number" step="0.01" min="0" /></label>
+          <label>Chave Pix (só modo demo)<input id="c_pix" type="text" /></label>
+          <label>Nome do recebedor<input id="c_pagador" type="text" /></label>
+          <label>Cidade<input id="c_cidade" type="text" /></label>
+          <label>Contato<input id="c_contato" type="text" /></label>
+          <label>Nova senha admin<input id="c_senha" type="password" placeholder="deixe em branco p/ manter" /></label>
+        </div>
+        <button id="btnSalvarCfg" class="btn btn-primary">Salvar configurações</button>
+      </section>
+
+      <section class="card">
+        <h2>Reservados / Pagos</h2>
+        <p class="muted">Pagamentos via Pix são confirmados automaticamente. Você pode ajustar manualmente se precisar.</p>
+        <div id="listaAdm" class="lista-adm"></div>
+      </section>
+
+      <section class="card">
+        <h2>Sorteio</h2>
+        <p class="muted">Sorteia apenas entre números <strong>pagos</strong>.</p>
+        <button id="btnSortear" class="btn btn-primary">Sortear ganhador</button>
+        <div id="resultadoSorteio" class="resultado hidden"></div>
+      </section>
+
+      <section class="card perigo">
+        <h2>Zona de perigo</h2>
+        <button id="btnReset" class="btn btn-danger">Reiniciar rifa (apaga tudo)</button>
+      </section>
+    </div>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>

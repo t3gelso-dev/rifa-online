@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rifa Online</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <h1 id="titulo">Rifa Online</h1>
+      <a href="admin.html" class="admin-link">Área do admin</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p id="descricao" class="descricao"></p>
+      <div class="resumo">
+        <div class="resumo-item"><span class="resumo-num" id="disponiveis">0</span><span>Disponíveis</span></div>
+        <div class="resumo-item"><span class="resumo-num" id="reservados">0</span><span>Reservados</span></div>
+        <div class="resumo-item"><span class="resumo-num" id="pagos">0</span><span>Pagos</span></div>
+        <div class="resumo-item"><span class="resumo-num" id="valor">R$ 0,00</span><span>Por número</span></div>
+      </div>
+    </section>
+
+    <section class="selecao">
+      <h2>Seus números</h2>
+      <p class="muted">Clique para selecionar e depois gere o Pix para pagar.</p>
+      <div id="selecionados" class="selecionados">Nenhum selecionado</div>
+      <div class="acoes">
+        <button id="btnLimpar" class="btn btn-ghost">Limpar</button>
+        <button id="btnGerarPix" class="btn btn-primary">Gerar Pix</button>
+      </div>
+    </section>
+
+    <section class="grade-wrap">
+      <h2>Escolha seus números</h2>
+      <div id="grade" class="grade"></div>
+      <div class="legenda">
+        <span><i class="dot disponivel"></i> Disponível</span>
+        <span><i class="dot reservado"></i> Reservado</span>
+        <span><i class="dot pago"></i> Pago</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal de pagamento -->
+  <div id="modalPix" class="modal hidden">
+    <div class="modal-box">
+      <button class="modal-close" id="fecharPix">&times;</button>
+      <h3>Pague com Pix</h3>
+      <p class="muted">Valor total: <strong id="pixValor"></strong></p>
+
+      <div class="form-grid pix-form" id="dadosComprador">
+        <label>Nome<input id="c_nome" type="text" placeholder="Seu nome" /></label>
+        <label>WhatsApp/Telefone<input id="c_tel" type="text" placeholder="(00) 00000-0000" /></label>
+        <label>E-mail<input id="c_email" type="email" placeholder="voce@email.com" /></label>
+      </div>
+
+      <div id="pixArea" class="hidden">
+        <div class="pix-grid">
+          <img id="pixQr" alt="QR Code Pix" class="pix-qr" />
+          <div class="pix-info">
+            <label>Copia e cola</label>
+            <textarea id="pixCode" readonly rows="4"></textarea>
+            <button id="btnCopiar" class="btn btn-primary">Copiar código</button>
+          </div>
+        </div>
+        <p class="aviso">Após pagar, a confirmação é automática. Esta janela se atualiza sozinha.</p>
+        <div id="pixStatus" class="pix-status"></div>
+        <button id="btnSimular" class="btn btn-ghost hidden">Simular pagamento (demo)</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <footer class="footer">
+    <div class="container">Rifa Online — pagamento via Mercado Pago (Pix).</div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

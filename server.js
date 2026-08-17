@@ -164,7 +164,14 @@ function authMiddleware(req, res, next) {
 // ---------- App ----------
 const app = express();
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+
+// Arquivos do front (na raiz do projeto)
+const frontFiles = ['index.html', 'admin.html', 'style.css', 'app.js', 'admin.js'];
+frontFiles.forEach((f) => {
+  app.get('/' + (f === 'index.html' ? '' : f), (req, res) => {
+    res.sendFile(path.join(__dirname, f));
+  });
+});
 
 // Estado público da rifa
 app.get('/api/raffle', (req, res) => {
