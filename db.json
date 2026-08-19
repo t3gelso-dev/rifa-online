@@ -145,7 +145,7 @@
     },
     {
       "numero": 34,
-      "status": "reservado"
+      "status": "pago"
     },
     {
       "numero": 35,
@@ -439,7 +439,7 @@
       "email": "milenakaroline44@gmail.com",
       "telefone": "41997363343",
       "total": 10,
-      "status": "pending",
+      "status": "approved",
       "paymentId": "174644834956",
       "createdAt": 1787168179467,
       "qrCode": "00020126580014br.gov.bcb.pix01364de98293-996d-4f10-93dd-9aa865dc4cbb520400005303986540510.005802BR5911OLGE10337456008Curitiba62250521mpqrinter174644834956630427F8",
