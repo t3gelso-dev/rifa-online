@@ -49,7 +49,7 @@
     },
     {
       "numero": 10,
-      "status": "reservado"
+      "status": "pago"
     },
     {
       "numero": 11,
@@ -454,7 +454,7 @@
       "email": "alinemanumattos8@gmail.com",
       "telefone": "41996082306",
       "total": 10,
-      "status": "pending",
+      "status": "approved",
       "paymentId": "173845752809",
       "createdAt": 1787241660131,
       "qrCode": "00020126580014br.gov.bcb.pix01364de98293-996d-4f10-93dd-9aa865dc4cbb520400005303986540510.005802BR5911OLGE10337456008Curitiba62250521mpqrinter173845752809630419ED",
