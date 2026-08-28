@@ -13,7 +13,7 @@
   "numbers": [
     {
       "numero": 1,
-      "status": "reservado"
+      "status": "disponivel"
     },
     {
       "numero": 2,
@@ -484,7 +484,7 @@
       "email": "t3lilia@gmail.com",
       "telefone": "41987625792",
       "total": 10,
-      "status": "pending",
+      "status": "expired",
       "paymentId": "174955018365",
       "createdAt": 1787853124266,
       "qrCode": "00020126580014br.gov.bcb.pix01364de98293-996d-4f10-93dd-9aa865dc4cbb520400005303986540510.005802BR5911OLGE10337456008Curitiba62250521mpqrinter17495501836563047371",
