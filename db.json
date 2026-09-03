@@ -161,7 +161,7 @@
     },
     {
       "numero": 38,
-      "status": "reservado"
+      "status": "pago"
     },
     {
       "numero": 39,
@@ -515,7 +515,7 @@
       "email": "t3lilis@gmail.com",
       "telefone": "41 987625792",
       "total": 10,
-      "status": "pending",
+      "status": "approved",
       "paymentId": "177013662816",
       "createdAt": 1788435855768,
       "qrCode": "00020126580014br.gov.bcb.pix01364de98293-996d-4f10-93dd-9aa865dc4cbb520400005303986540510.005802BR5911OLGE10337456008Curitiba62250521mpqrinter1770136628166304721F",
