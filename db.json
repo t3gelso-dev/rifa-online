@@ -65,11 +65,11 @@
     },
     {
       "numero": 14,
-      "status": "reservado"
+      "status": "pago"
     },
     {
       "numero": 15,
-      "status": "reservado"
+      "status": "pago"
     },
     {
       "numero": 16,
@@ -121,7 +121,7 @@
     },
     {
       "numero": 28,
-      "status": "reservado"
+      "status": "pago"
     },
     {
       "numero": 29,
@@ -532,7 +532,7 @@
       "email": "thaysbastavan@gmail.com",
       "telefone": "41992927680",
       "total": 30,
-      "status": "pending",
+      "status": "approved",
       "paymentId": "178147547282",
       "createdAt": 1788981455503,
       "qrCode": "00020126580014br.gov.bcb.pix01364de98293-996d-4f10-93dd-9aa865dc4cbb520400005303986540530.005802BR5911OLGE10337456008Curitiba62250521mpqrinter1781475472826304FE0E",
