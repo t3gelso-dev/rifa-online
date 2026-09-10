@@ -25,7 +25,7 @@
     },
     {
       "numero": 4,
-      "status": "reservado"
+      "status": "pago"
     },
     {
       "numero": 5,
@@ -53,7 +53,7 @@
     },
     {
       "numero": 11,
-      "status": "reservado"
+      "status": "pago"
     },
     {
       "numero": 12,
@@ -548,7 +548,7 @@
       "email": "t3lilis@gmail.com",
       "telefone": "+55 41 99551-5893",
       "total": 20,
-      "status": "pending",
+      "status": "approved",
       "paymentId": "177293438047",
       "createdAt": 1789044335059,
       "qrCode": "00020126580014br.gov.bcb.pix01364de98293-996d-4f10-93dd-9aa865dc4cbb520400005303986540520.005802BR5911OLGE10337456008Curitiba62250521mpqrinter177293438047630429C1",
